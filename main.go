@@ -6,10 +6,11 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"go-my-manager-api/config/jwt_config"
+	"log"
 )
 
 const (
-	dataSource = "root:123456@tcp(127.0.0.1:3306)/my-manager?charset=utf8"
+	dataSource = "admin:123456@tcp(127.0.0.1:3306)/my-manager?charset=utf8"
 )
 
 // 数据库连接池
@@ -18,6 +19,7 @@ var DB *gorm.DB
 func main() {
 	db, err := gorm.Open("mysql", dataSource)
 	if err != nil {
+		log.Println(err)
 		panic("连接数据库失败")
 	}
 	defer db.Close()
