@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package com.egoist.mal.grpc.generated;
+
+service AnimeProtoService {
+  rpc search(AnimeSearchRequest) returns (AnimeSearchResponse) {}
+}
+
+message AnimeSearchRequest {
+  string name = 1;
+  string text = 2;
+}
+
+message AnimeSearchResponse {
+  int32 status = 1;
+  string msg = 2;
+  repeated AnimeData data = 3;
+}
+
+message AnimeData {
+  int32 anime_id = 1;
+  string en_name = 2;
+  string jp_name = 3;
+  string pic = 4;
+  string anime_type = 5;
+  int32 episodes = 6;
+  string premiered = 7;
+  string producers = 8;
+  string studios = 9;
+  string source = 10;
+}

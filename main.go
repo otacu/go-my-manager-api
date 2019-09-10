@@ -10,7 +10,8 @@ import (
 )
 
 const (
-	dataSource = "admin:123456@tcp(127.0.0.1:3306)/my-manager?charset=utf8"
+	dataSource             = "admin:123456@tcp(127.0.0.1:3306)/my-manager?charset=utf8&parseTime=true"
+	malAnimeServiceAddress = "localhost:10097"
 )
 
 // 数据库连接池
@@ -44,6 +45,7 @@ func main() {
 	r := e.Group("/my-manager-api")
 	r.Use(middleware.JWTWithConfig(config))
 	r.GET("/user/info", UserInfo)
+	r.POST("/mal-anime/search", Search)
 
 	// 启动
 	e.Logger.Fatal(e.Start(":8895"))
