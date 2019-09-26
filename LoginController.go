@@ -28,8 +28,8 @@ func Login(c echo.Context) error {
 		managerUser.Name,
 		// 设置父类参数值
 		jwt.StandardClaims{
-			// 超时时间15分钟
-			ExpiresAt: time.Now().Add(time.Minute * 15).Unix(),
+			// 超时时间30分钟
+			ExpiresAt: time.Now().Add(time.Minute * 30).Unix(),
 		},
 	}
 
